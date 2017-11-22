@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>None.js Image upload</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <style>
+    #imageToUpload {
+        display: none;
+    }
+
+    .align-center {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        position: fixed;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        left: 0;
+    }
+    </style>
+</head>
+
+<body>
+    <div class="align-center">
+        <form id="uploadImageForm" enctype="multipart/form-data" action="/api/image" method="post">
+            <div class="form-group">
+                <label class="btn btn-primary btn-block">
+                    Select image
+                    <input type="file" class="form-control" name="imageToUpload" id="imageToUpload" required>
+                </label>
+            </div>
+            <div class="form-group">
+                <button type="submit" class="btn btn-success btn-block" disabled>Upload</button>
+            </div>
+        </form>
+    </div>
+    <script type="text/javascript">
+    $(document).ready(
+        function() {
+            $('input:file').change(
+                function() {
+                    if ($(this).val()) {
+                        $('button').removeAttr('disabled');
+                    }
+                }
+            );
+        });
+    </script>
+</body>
+
+</html>
